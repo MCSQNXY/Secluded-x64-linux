@@ -1,11 +1,12 @@
 #!/bin/bash
 
 ulimit -s 524288
-chmod -R 777 "$PWD"
 
 export LD_LIBRARY_PATH=.
 
 while true; do
+    chmod -R 777 "$PWD"
+
     ./SecludedLauncher.out --console
     
     code=$?
@@ -17,10 +18,8 @@ while true; do
     fi
 
     if [[ "$code" -eq 0 ]]; then
-        if [ -f "engine-x64.out" ]; then
-            ./engine-x64.out --console
-        elif [ -f "engine-arm64.out" ]; then
-            ./engine-arm64.out --console
+        if [ -f "engine.out" ]; then
+            ./engine.out --console
         fi
     fi
 
